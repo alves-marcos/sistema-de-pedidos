@@ -1,6 +1,8 @@
 package application;
 
+import entities.Pedido;
 import entities.Produto;
+import entities.enums.StatusPedido;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +46,6 @@ public class Main {
                 System.out.print("Escolha o que deseja fazer: ");
                 escolha = sc.nextInt();
                 sc.nextLine();
-
-
             } else if (escolha == 2) {
                 for (Produto produto : listaProd){
                     produto.listarProdutos();
@@ -59,10 +59,26 @@ public class Main {
                 System.out.print("Escolha o que deseja fazer: ");
                 escolha = sc.nextInt();
                 sc.nextLine();
+            } else if (escolha == 3) {
+                List<Pedido> pedidos = new ArrayList<>();
+                for (Produto prod : listaProd){
+                    System.out.println(prod);
+                }
+                System.out.print("Informe o ID do produto que deseja adicionar ao pedido: ");
+                int idProdutoDoPedido = sc.nextInt();
+                System.out.print("Informe a quantidade: ");
+                int quantiadeProdutoPedido = sc.nextInt();
+                for (Produto produto : listaProd){
+                    if (idProdutoDoPedido == produto.getID()){
+                        Pedido pedido = new Pedido( ,StatusPedido.PENDENTE);
+                    }
+                }
 
 
 
-                
+
+
+
             }
         }
 
