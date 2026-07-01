@@ -1,5 +1,6 @@
 package application;
 
+import entities.ItemPedido;
 import entities.Pedido;
 import entities.Produto;
 import entities.enums.StatusPedido;
@@ -26,8 +27,8 @@ public class Main {
         int escolha = sc.nextInt();
         sc.nextLine();
 
-        while (escolha != 4){
-            if (escolha == 1){
+        while (escolha != 4) {
+            if (escolha == 1) {
                 System.out.println("=================================================");
                 System.out.print("Insira o nome do Produto que deseja cadastrar: ");
                 String name = sc.nextLine();
@@ -47,7 +48,7 @@ public class Main {
                 escolha = sc.nextInt();
                 sc.nextLine();
             } else if (escolha == 2) {
-                for (Produto produto : listaProd){
+                for (Produto produto : listaProd) {
                     produto.listarProdutos();
                 }
 
@@ -60,31 +61,34 @@ public class Main {
                 escolha = sc.nextInt();
                 sc.nextLine();
             } else if (escolha == 3) {
-                List<Pedido> pedidos = new ArrayList<>();
-                for (Produto prod : listaProd){
-                    System.out.println(prod);
+                Pedido novoPedido = new Pedido(StatusPedido.PENDENTE);
+                for (Produto produto : listaProd) {
+                    produto.listarProdutos();
                 }
-                System.out.print("Informe o ID do produto que deseja adicionar ao pedido: ");
-                int idProdutoDoPedido = sc.nextInt();
-                System.out.print("Informe a quantidade: ");
-                int quantiadeProdutoPedido = sc.nextInt();
-                for (Produto produto : listaProd){
-                    if (idProdutoDoPedido == produto.getID()){
-                        Pedido pedido = new Pedido( ,StatusPedido.PENDENTE);
+                System.out.print("Informe o ID do Produto que deseja acrescentar no pedido: ");
+                int idItemPedido = sc.nextInt();
+                System.out.print("Informe a quantidade do Produto: ");
+                int qtdeItemPedido = sc.nextInt();
+                for (Produto produto : listaProd) {
+                    if (produto.getID() == idItemPedido) {
+                        ItemPedido itemPedido = new ItemPedido(qtdeItemPedido, produto);
+                        novoPedido.getListaItens().add(itemPedido);
+                        System.out.println("Produto adicionado ao pedido!");
                     }
+                    System.out.println("========== MENU DE PEDIDOS ==========");
+                    System.out.println("    1 - Cadastrar produto\n" +
+                            "    2 - Listar produtos\n" +
+                            "    3 - Criar pedido\n" +
+                            "    4 - Sair");
+                    System.out.println("====================");
+                    System.out.print("Escolha o que deseja fazer: ");
+                    escolha = sc.nextInt();
+                    sc.nextLine();
+
                 }
-
-
-
-
-
 
             }
         }
-
-
-
-
 
         sc.close();
     }

@@ -61,4 +61,5 @@ public class Pedido {
     public void setListaItens(List<ItemPedido> listaItens) {
         this.listaItens = listaItens;
     }
+
 }
