@@ -1,12 +1,17 @@
 package entities;
 
 public class ItemPedido {
-    private Integer quantidade;
-    private Produto produto;
 
-    public ItemPedido(Integer quantidade, Produto produto) {
-        this.quantidade = quantidade;
+    private Produto produto;
+    private Integer quantidade;
+
+    public ItemPedido(Produto produto, Integer quantidade) {
         this.produto = produto;
+        this.quantidade = quantidade;
+    }
+
+    public Produto getProduto() {
+        return produto;
     }
 
     public Integer getQuantidade() {
@@ -17,13 +22,21 @@ public class ItemPedido {
         this.quantidade = quantidade;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public double subtotal() {
+        return produto.getPreco() * quantidade;
     }
 
-    public double subtotal(){
-        return quantidade * produto.getPrice();
-    }
+    @Override
+    public String toString() {
 
+        return String.format(
+                "%s | Qtd: %d | Preço Unit.: R$ %.2f | Subtotal: R$ %.2f",
+                produto.getNome(),
+                quantidade,
+                produto.getPreco(),
+                subtotal()
+        );
+
+    }
 
 }
